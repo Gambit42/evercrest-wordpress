@@ -17,6 +17,8 @@
 # Never commit, even inside tracked folders
 node_modules/
 vendor/
+# ...except hand-vendored front-end libs (e.g. Swiper): no install step, so they must ship in git
+!/themes/nad/assets/vendor/
 *.log
 .env
 .env.*

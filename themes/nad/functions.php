@@ -32,7 +32,7 @@ if ( ! function_exists( 'nad_editor_style' ) ) :
 	 * @return void
 	 */
 	function nad_editor_style() {
-		add_editor_style( 'assets/css/editor-style.css' );
+		add_editor_style( array( 'assets/css/editor-style.css', 'assets/css/evercrest.css' ) );
 	}
 endif;
 add_action( 'after_setup_theme', 'nad_editor_style' );
@@ -60,6 +60,27 @@ if ( ! function_exists( 'nad_enqueue_styles' ) ) :
 			'path',
 			get_parent_theme_file_path( $src )
 		);
+
+		// Swiper (vendored, https://swiperjs.com) drives the testimonial and journal carousels.
+		wp_register_style( 'swiper', get_parent_theme_file_uri( 'assets/vendor/swiper/swiper.min.css' ), array(), '14.2.0' );
+		wp_register_script( 'swiper', get_parent_theme_file_uri( 'assets/vendor/swiper/swiper-bundle.min.js' ), array(), '14.2.0', array( 'strategy' => 'defer' ) );
+
+		wp_enqueue_style(
+			'nad-evercrest',
+			get_parent_theme_file_uri( 'assets/css/evercrest.css' ),
+			array( 'nad-style', 'swiper' ),
+			filemtime( get_parent_theme_file_path( 'assets/css/evercrest.css' ) )
+		);
+
+		wp_enqueue_script(
+			'nad-evercrest',
+			get_parent_theme_file_uri( 'assets/js/evercrest.js' ),
+			array( 'swiper' ),
+			filemtime( get_parent_theme_file_path( 'assets/js/evercrest.js' ) ),
+			array( 'strategy' => 'defer' )
+		);
+		// Runs in <head> so reveal targets are hidden before first paint (no flash, no jump).
+		wp_add_inline_script( 'nad-evercrest', 'document.documentElement.classList.add("ec-js");', 'before' );
 	}
 endif;
 add_action( 'wp_enqueue_scripts', 'nad_enqueue_styles' );
@@ -157,3 +178,6 @@ if ( ! function_exists( 'nad_format_binding' ) ) :
 		}
 	}
 endif;
+
+// Residences, regions and the front-page blocks that list them.
+require get_parent_theme_file_path( 'inc/collections.php' );

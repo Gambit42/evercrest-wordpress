@@ -4,7 +4,9 @@
   "customTemplates": [
     {
       "name": "page-no-title",
-      "postTypes": ["page"],
+      "postTypes": [
+        "page"
+      ],
       "title": "Page No Title"
     }
   ],
@@ -16,7 +18,7 @@
       "defaultPalette": false,
       "palette": [
         {
-          "color": "#FFFFFF",
+          "color": "#FBFAF8",
           "name": "Base",
           "slug": "base"
         },
@@ -41,19 +43,24 @@
           "slug": "accent-3"
         },
         {
-          "color": "#686868",
+          "color": "#777777",
           "name": "Accent 4",
           "slug": "accent-4"
         },
         {
-          "color": "#FBFAF3",
+          "color": "#EFEDE9",
           "name": "Accent 5",
           "slug": "accent-5"
         },
         {
-          "color": "color-mix(in srgb, currentColor 20%, transparent)",
+          "color": "#E8E8E8",
           "name": "Accent 6",
           "slug": "accent-6"
+        },
+        {
+          "color": "#999999",
+          "name": "Subtle",
+          "slug": "subtle"
         }
       ]
     },
@@ -100,12 +107,73 @@
           "slug": "80"
         }
       ],
-      "units": ["%", "px", "em", "rem", "vh", "vw"]
+      "units": [
+        "%",
+        "px",
+        "em",
+        "rem",
+        "vh",
+        "vw"
+      ]
     },
     "typography": {
       "defaultFontSizes": false,
       "fluid": true,
       "fontFamilies": [
+        {
+          "fontFace": [
+            {
+              "fontFamily": "Barlow",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "src": [
+                "file:./assets/fonts/barlow/Barlow-400.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Barlow",
+              "fontStyle": "normal",
+              "fontWeight": "500",
+              "src": [
+                "file:./assets/fonts/barlow/Barlow-500.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Barlow",
+              "fontStyle": "normal",
+              "fontWeight": "600",
+              "src": [
+                "file:./assets/fonts/barlow/Barlow-600.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Barlow",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "src": [
+                "file:./assets/fonts/barlow/Barlow-700.woff2"
+              ]
+            }
+          ],
+          "fontFamily": "Barlow, sans-serif",
+          "name": "Barlow",
+          "slug": "barlow"
+        },
+        {
+          "fontFace": [
+            {
+              "fontFamily": "Archivo",
+              "fontStyle": "normal",
+              "fontWeight": "100 900",
+              "src": [
+                "file:./assets/fonts/archivo/Archivo-VariableFont_wght.woff2"
+              ]
+            }
+          ],
+          "fontFamily": "Archivo, sans-serif",
+          "name": "Archivo",
+          "slug": "archivo"
+        },
         {
           "fontFace": [
             {
@@ -179,6 +247,36 @@
           "name": "Extra Extra Large",
           "size": "2.15rem",
           "slug": "xx-large"
+        },
+        {
+          "fluid": false,
+          "name": "Lead",
+          "size": "clamp(15px, 1.6vw, 19px)",
+          "slug": "lead"
+        },
+        {
+          "fluid": false,
+          "name": "Section",
+          "size": "clamp(32px, 4.5vw, 64px)",
+          "slug": "section"
+        },
+        {
+          "fluid": false,
+          "name": "Display",
+          "size": "clamp(40px, 5.8vw, 80px)",
+          "slug": "display"
+        },
+        {
+          "fluid": false,
+          "name": "Stat",
+          "size": "clamp(40px, 5vw, 72px)",
+          "slug": "stat"
+        },
+        {
+          "fluid": false,
+          "name": "Huge",
+          "size": "clamp(36px, 6vw, 96px)",
+          "slug": "huge"
         }
       ],
       "writingMode": true
@@ -351,18 +449,14 @@
       "core/navigation": {
         "elements": {
           "link": {
-            ":hover": {
-              "typography": {
-                "textDecoration": "underline"
-              }
-            },
             "typography": {
               "textDecoration": "none"
             }
           }
         },
         "typography": {
-          "fontSize": "var(--wp--preset--font-size--medium)"
+          "fontSize": "13px",
+          "fontWeight": "500"
         }
       },
       "core/post-comments-form": {
@@ -602,14 +696,19 @@
         },
         "spacing": {
           "padding": {
-            "bottom": "1rem",
-            "left": "2.25rem",
-            "right": "2.25rem",
-            "top": "1rem"
+            "top": "14px",
+            "bottom": "14px",
+            "left": "28px",
+            "right": "28px"
           }
         },
         "typography": {
-          "fontSize": "var(--wp--preset--font-size--medium)"
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "letterSpacing": "0.01em"
+        },
+        "border": {
+          "radius": "9999px"
         }
       },
       "caption": {
@@ -620,17 +719,26 @@
       },
       "h1": {
         "typography": {
-          "fontSize": "var(--wp--preset--font-size--xx-large)"
+          "fontSize": "var(--wp--preset--font-size--display)",
+          "fontWeight": "800",
+          "letterSpacing": "-0.035em",
+          "lineHeight": "0.95",
+          "textTransform": "none"
         }
       },
       "h2": {
         "typography": {
-          "fontSize": "var(--wp--preset--font-size--x-large)"
+          "fontSize": "var(--wp--preset--font-size--section)"
         }
       },
       "h3": {
         "typography": {
-          "fontSize": "var(--wp--preset--font-size--large)"
+          "fontFamily": "var(--wp--preset--font-family--barlow)",
+          "fontSize": "17px",
+          "fontWeight": "600",
+          "letterSpacing": "-0.01em",
+          "lineHeight": "1.3",
+          "textTransform": "none"
         }
       },
       "h4": {
@@ -654,9 +762,11 @@
       },
       "heading": {
         "typography": {
-          "fontWeight": "400",
-          "letterSpacing": "-0.1px",
-          "lineHeight": "1.125"
+          "fontFamily": "var(--wp--preset--font-family--archivo)",
+          "fontWeight": "900",
+          "letterSpacing": "-0.025em",
+          "lineHeight": "0.92",
+          "textTransform": "uppercase"
         }
       },
       "link": {
@@ -667,6 +777,9 @@
         },
         "color": {
           "text": "currentColor"
+        },
+        "typography": {
+          "textDecoration": "none"
         }
       }
     },
@@ -678,11 +791,11 @@
       }
     },
     "typography": {
-      "fontFamily": "var(--wp--preset--font-family--manrope)",
-      "fontSize": "var(--wp--preset--font-size--large)",
-      "fontWeight": "300",
-      "letterSpacing": "-0.1px",
-      "lineHeight": "1.4"
+      "fontFamily": "var(--wp--preset--font-family--barlow)",
+      "fontSize": "15px",
+      "fontWeight": "400",
+      "letterSpacing": "0",
+      "lineHeight": "1.6"
     }
   },
   "templateParts": [
