@@ -146,9 +146,8 @@ a { transition: color 0.2s, opacity 0.2s; }
 	.wp-site-blocks > header.wp-block-template-part { top: 0; }
 }
 .ec-nav {
-	background: rgb(251 250 248 / 0.86);
-	backdrop-filter: blur(12px);
-	border-bottom: 1px solid rgb(0 0 0 / 0.06);
+	background: #fbfaf8;
+	border-bottom: 0;
 }
 .ec-nav-inner {
 	display: grid;
@@ -215,8 +214,6 @@ a { transition: color 0.2s, opacity 0.2s; }
 	.ec-nav-inner { grid-template-columns: 1fr auto auto; }
 	.ec-nav .ec-pill { order: 3; } /* burger sits after "Book a viewing", far right */
 }
-/* backdrop-filter makes .ec-nav the containing block for fixed children, which would trap the overlay inside the header bar. */
-.ec-nav:has(.is-menu-open) { backdrop-filter: none; }
 .ec-pill .is-menu-open .wp-block-navigation__container {
 	gap: 20px;
 	padding: 0;

@@ -179,5 +179,34 @@ if ( ! function_exists( 'nad_format_binding' ) ) :
 	}
 endif;
 
+/**
+ * Meta description + Open Graph/Twitter tags. Copy comes from wp-admin:
+ * the page/post excerpt, else Settings → General → Tagline. Image is the featured
+ * image, else the first hero shot (attachment 10).
+ */
+add_action( 'init', fn() => add_post_type_support( 'page', 'excerpt' ) );
+add_action(
+	'wp_head',
+	function () {
+		$singular = is_singular();
+		$desc     = ( $singular && has_excerpt() ) ? get_the_excerpt() : get_bloginfo( 'description' );
+		$image    = ( $singular && has_post_thumbnail() ) ? get_the_post_thumbnail_url( null, 'large' ) : wp_get_attachment_image_url( 10, 'large' );
+		$tags     = array(
+			'description'    => $desc,
+			'og:type'        => is_single() ? 'article' : 'website',
+			'og:site_name'   => get_bloginfo( 'name' ),
+			'og:title'       => wp_get_document_title(),
+			'og:description' => $desc,
+			'og:url'         => $singular ? get_permalink() : home_url( add_query_arg( null, null ) ),
+			'og:image'       => $image,
+			'twitter:card'   => 'summary_large_image',
+		);
+		foreach ( array_filter( $tags ) as $key => $value ) {
+			printf( '<meta %s="%s" content="%s" />' . "\n", str_starts_with( $key, 'og:' ) ? 'property' : 'name', esc_attr( $key ), esc_attr( wp_strip_all_tags( $value ) ) );
+		}
+	},
+	1
+);
+
 // Residences, regions and the front-page blocks that list them.
 require get_parent_theme_file_path( 'inc/collections.php' );
