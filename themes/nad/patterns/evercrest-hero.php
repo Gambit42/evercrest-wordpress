@@ -23,7 +23,7 @@ $nad_shots = array(
 	<!-- wp:group {"className":"ec-hero-top","layout":{"type":"default"}} -->
 	<div class="wp-block-group ec-hero-top">
 		<!-- wp:heading {"textAlign":"center","level":1} -->
-		<h1 class="wp-block-heading has-text-align-center">Homes Unlike<br>Anything Else</h1>
+		<h1 class="wp-block-heading has-text-align-center">Test Home</h1>
 		<!-- /wp:heading -->
 		<!-- wp:paragraph {"align":"center","className":"ec-hero-lead"} -->
 		<p class="has-text-align-center ec-hero-lead">The home you deserve has never been built before. We design and deliver one-of-a-kind private estates — start to finish.</p>
