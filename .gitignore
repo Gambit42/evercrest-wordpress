@@ -3,6 +3,9 @@
 /*
 !/.gitignore
 !/.gitattributes
+!/.github/
+!/.github/workflows/
+!/.github/workflows/deploy.yml
 
 # Our theme
 !/themes/
