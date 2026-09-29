@@ -13,6 +13,7 @@
 !/plugins/
 /plugins/*
 !/plugins/nad-core/
+!/plugins/evercrest-core/
 
 # Never commit, even inside tracked folders
 node_modules/

@@ -208,5 +208,16 @@ add_action(
 	1
 );
 
-// Residences, regions and the front-page blocks that list them.
-require get_parent_theme_file_path( 'inc/collections.php' );
+// Evercrest Core owns the content model; the theme owns its visual blocks.
+if ( function_exists( 'evercrest_core_register_content_types' ) ) {
+	require get_parent_theme_file_path( 'inc/collections.php' );
+} else {
+	add_action(
+		'admin_notices',
+		function () {
+			echo '<div class="notice notice-error"><p>'
+				. esc_html__( 'The NAD theme requires the Evercrest Core plugin for residences, regions, and their blocks.', 'nad' )
+				. '</p></div>';
+		}
+	);
+}

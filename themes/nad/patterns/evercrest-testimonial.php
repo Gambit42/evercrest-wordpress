@@ -10,13 +10,7 @@
  * @since nad 1.0
  */
 
-// Quote, client, residence, portrait (Media Library attachment ID).
-// Sample testimonials with Pexels stock portraits: swap in real client quotes and photos before launch.
-$nad_quotes = array(
-	array( 'We came to Evercrest with a site and a feeling. Thirty months later we have a house that answers every question the mountain asks of it — and a winter heating bill a third of what we used to pay.', 'Daniel Whitmore', 'Owner, The Aspen Residence', 40 ),
-	array( 'They walked the bluff at dawn, at noon and at dusk before drawing a single line. That patience is in every room. When the fog rolls in, the house simply belongs to it.', 'Claire Ashford', 'Owner, Glasshouse on the Bluff', 41 ),
-	array( 'What surprised us most was the calm. One team, one point of contact, no surprises on the budget — and a garden already growing the day we moved in.', 'Elena Marchetti', 'Owner, Villa Serena', 42 ),
-);
+$nad_quotes = function_exists( 'evercrest_core_testimonials' ) ? evercrest_core_testimonials() : array();
 ?>
 <!-- wp:group {"tagName":"section","align":"full","className":"ec-testimonial ec-carousel","layout":{"type":"default"}} -->
 <section class="wp-block-group alignfull ec-testimonial ec-carousel">
@@ -31,9 +25,11 @@ $nad_quotes = array(
 			<div class="wp-block-group ec-quote-slide swiper-slide">
 				<!-- wp:group {"className":"ec-ph ec-quote-img","layout":{"type":"default"}} -->
 				<div class="wp-block-group ec-ph ec-quote-img">
-					<!-- wp:image {"className":"ec-ph-img"} -->
-					<figure class="wp-block-image ec-ph-img"><img src="<?php echo esc_url( wp_get_attachment_url( $nad_q[3] ) ); ?>" alt="<?php echo esc_attr( $nad_q[1] ); ?>"/></figure>
-					<!-- /wp:image -->
+					<?php if ( has_post_thumbnail( $nad_q ) ) : ?>
+						<!-- wp:image {"className":"ec-ph-img"} -->
+						<figure class="wp-block-image ec-ph-img"><?php echo get_the_post_thumbnail( $nad_q, 'large', array( 'alt' => get_the_title( $nad_q ) ) ); ?></figure>
+						<!-- /wp:image -->
+					<?php endif; ?>
 					<!-- wp:paragraph -->
 					<p>client portrait</p>
 					<!-- /wp:paragraph -->
@@ -45,15 +41,15 @@ $nad_quotes = array(
 					<p class="ec-quote-mark" aria-hidden="true">“</p>
 					<!-- /wp:paragraph -->
 					<!-- wp:paragraph {"className":"ec-quote"} -->
-					<p class="ec-quote"><?php echo esc_html( $nad_q[0] ); ?></p>
+					<p class="ec-quote"><?php echo esc_html( wp_strip_all_tags( $nad_q->post_content ) ); ?></p>
 					<!-- /wp:paragraph -->
 					<!-- wp:group {"className":"ec-quote-cite","layout":{"type":"default"}} -->
 					<div class="wp-block-group ec-quote-cite">
 						<!-- wp:paragraph {"className":"ec-quote-name"} -->
-						<p class="ec-quote-name"><?php echo esc_html( $nad_q[1] ); ?></p>
+						<p class="ec-quote-name"><?php echo esc_html( get_the_title( $nad_q ) ); ?></p>
 						<!-- /wp:paragraph -->
 						<!-- wp:paragraph {"className":"ec-quote-role"} -->
-						<p class="ec-quote-role"><?php echo esc_html( $nad_q[2] ); ?></p>
+						<p class="ec-quote-role"><?php echo esc_html( evercrest_core_meta( $nad_q->ID, 'attribution' ) ); ?></p>
 						<!-- /wp:paragraph -->
 					</div>
 					<!-- /wp:group -->
