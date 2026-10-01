@@ -25,12 +25,7 @@
 		</div>
 		<!-- /wp:group -->
 
-		<!-- wp:navigation {"className":"ec-pill","overlayMenu":"always","layout":{"type":"flex","justifyContent":"center"}} -->
-			<!-- wp:navigation-link {"label":"Residences","url":"/#residences","kind":"custom"} /-->
-			<!-- wp:navigation-link {"label":"Index","url":"/#index","kind":"custom"} /-->
-			<!-- wp:navigation-link {"label":"Journal","url":"/#journal","kind":"custom"} /-->
-			<!-- wp:navigation-link {"label":"Studio","url":"/#approach","kind":"custom"} /-->
-		<!-- /wp:navigation -->
+		<!-- wp:navigation {"className":"ec-pill","overlayMenu":"always","layout":{"type":"flex","justifyContent":"center"}} /-->
 
 		<!-- wp:group {"className":"ec-nav-actions","layout":{"type":"default"}} -->
 		<div class="wp-block-group ec-nav-actions">

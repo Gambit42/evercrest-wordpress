@@ -185,6 +185,8 @@ endif;
  * image, else the first hero shot (attachment 10).
  */
 add_action( 'init', fn() => add_post_type_support( 'page', 'excerpt' ) );
+// Edit pages inside their template (header, footer, no stray title) so the editor matches the front end.
+add_action( 'init', fn() => add_post_type_support( 'page', 'editor', array( 'default-mode' => 'template-locked' ) ) );
 add_action(
 	'wp_head',
 	function () {
